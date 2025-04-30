@@ -16,7 +16,7 @@
   "author": "Ronan",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.86.3"
+    "sass": "^1.87.0"
   },
   "devDependencies": {
     "gulp": "^5.0.0",

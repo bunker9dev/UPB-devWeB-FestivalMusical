@@ -35,9 +35,10 @@
     inset: 0;
 
     background-color: rgba($color:v.$negro,  $alpha: 0.5);
-    display: grid;
+    // display: grid;
     place-items: center;
     animation: fadeIn ease-in 0.5sec;
+
 
     &.fadeOut {
         animation: fadeOut ease-in 0.5sec;
@@ -45,9 +46,24 @@
 
 
     img {
+      
+        margin-top: 15rem;
         max-width: 100rem;
-
     }
+}
+
+.btn-cerrar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: v.$blanco;
+    border: none;
+    color: v.$negro;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 2rem;
 
 }
 
