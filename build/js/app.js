@@ -1,7 +1,27 @@
 document.addEventListener ('DOMContentLoaded', function() {
+
+    navegacionFija()
     crearGaleria()
+    resaltarEnlace()
+    efectoScroll()
+    
 
 })
+
+function navegacionFija() {
+    const header = document.querySelector('.header')
+    const sobreFestival = document.querySelector('.sobre-festival')
+
+    window.addEventListener('scroll', function() {
+
+        if( sobreFestival.getBoundingClientRect().bottom <1){
+            header.classList.add('fixed')
+        } else {
+            header.classList.remove('fixed')
+        }
+    })
+
+}
 
 function   crearGaleria() {
     const galeria = document.querySelector('.galeria-imagenes')
@@ -41,7 +61,7 @@ function mostrarImagen( i ) {
 
    
     modal.appendChild(imagen)
-    modal.appendChild(cerrarModalBtn)
+     modal.appendChild(cerrarModalBtn)
 
 
     // Agregar al HTML
@@ -69,4 +89,52 @@ function cerrarModal(){
 
 
    
+}
+
+function resaltarEnlace() {
+    document.addEventListener ('scroll', function() {
+
+        const sections = document.querySelectorAll('section')
+        const navLinks = document.querySelectorAll('.navegacion-principal a')
+
+        let actual = '';
+
+        sections.forEach ( section => {
+            const sectionTop = section.offsetTop
+            const sectionHeight  = section.clientHeight 
+
+            if (window.scrollY >= (sectionTop - sectionHeight / 3) ) {
+                actual = section.id ;
+            }
+  
+        })
+
+        navLinks.forEach (link => {
+            link.classList.remove('activo')
+            if(link.getAttribute('href') === '#' +actual){
+                link.classList.add('activo')
+            }
+        })
+
+    })
+
+}
+
+function efectoScroll() {
+    const navLinks = document.querySelectorAll('.navegacion-principal a')
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault()
+            const seccionnDestino =  e.target.getAttribute('href')
+            const seccion = document.querySelector(seccionnDestino)
+            
+            seccion.scrollIntoView({behavior: 'smooth'})
+            
+            console.log(seccion) ;
+
+        })
+    } )
+
+
 }
